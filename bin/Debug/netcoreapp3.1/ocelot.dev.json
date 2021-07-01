@@ -1,0 +1,56 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dotnet-webapi.herokuapp.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/weather",
+      "UpstreamHttpMethod": ["GET"],
+      "SwaggerKey": "dotnet_webapi",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/users/{user}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.github.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/github/users/{user}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "dotnet_webapi",
+      "Config": [
+        {
+          "Name": "dotnet_webapi",
+          "Version": "v1",
+          "Url": "https://dotnet-webapi.herokuapp.com/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5001"
+  }
+}
