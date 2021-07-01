@@ -4,7 +4,7 @@
 
 ## OCELOT
 
-![Ocelot](https://images.unsplash.com/photo-1607374072031-e3333f4a7c7a?ixid=MnwxOTkyMTB8MHwxfGNvbGxlY3Rpb258MXwzY1hKR09YdkpZOHx8fHx8Mnx8MTYyNTE4MTIwNg&ixlib=rb-1.2.1)
+![Ocelot](https://images.unsplash.com/photo-1607374072031-e3333f4a7c7a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTkyMTB8MHwxfGNvbGxlY3Rpb258MnwzY1hKR09YdkpZOHx8fHx8Mnx8MTYyNTE4MTQzNw&ixlib=rb-1.2.1&q=85)
 
 Ocelot is a .NET API Gateway. This project is aimed at people using .NET running a micro services / service oriented architecture that need a unified point of entry into their system. However it will work with anything that speaks HTTP and run on any platform that ASP.NET Core supports.
 
