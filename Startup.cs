@@ -33,6 +33,8 @@ namespace DotNetWebApiGateway
 
 
 
+
+
             var secret = "Thisismytestprivatekey";
             var key = Encoding.ASCII.GetBytes(secret);
             services.AddAuthentication(option =>
@@ -53,13 +55,22 @@ namespace DotNetWebApiGateway
             });
 
 
+
+
+
+
             services.AddOcelot().AddCacheManager(settings => settings.WithDictionaryHandle());
-            // services.AddSwaggerForOcelot(Configuration);
-            services.AddSwaggerForOcelot(Configuration,
-            (o) =>
-            {
-                o.GenerateDocsForGatewayItSelf = true;
-            });
+            services.AddSwaggerForOcelot(Configuration);
+            /*
+                        services.AddSwaggerForOcelot(Configuration,
+                        (o) =>
+                        {
+                           // o.GenerateDocsForGatewayItSelf = true;
+                        });
+            */
+
+
+
 
 
 
@@ -76,15 +87,19 @@ namespace DotNetWebApiGateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            // app.UsePathBase("/gateway");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
 
             //app.UseSwagger();
-            app.UseSwaggerForOcelotUI();
+
 
             app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
@@ -108,9 +123,22 @@ namespace DotNetWebApiGateway
 
             app.UseSwagger();
             */
+            // app.UseStaticFiles();
+            /*  app.UseSwaggerForOcelotUI(opt =>
+              {
+                  opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
+                  opt.PathToSwaggerGenerator = "/swagger/docs";
+              })
+              .UseOcelot()
+              .Wait();
 
-            app.UseOcelot()
-                .Wait();
+              app.UseSwagger();
+
+             */
+
+            app.UseSwaggerForOcelotUI()
+         .UseOcelot()
+         .Wait();
 
         }
     }
